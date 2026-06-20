@@ -152,6 +152,14 @@ textarea {
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 15px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.feedback-entry.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .feedback-entry h3 {
@@ -169,6 +177,36 @@ textarea {
   font-size: 0.85rem;
   color: #3498db;
   margin-bottom: 8px;
+}
+
+.entry-timestamp {
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Feedback Header */
+.feedback-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#clear-btn {
+  padding: 6px 14px;
+  background-color: transparent;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#clear-btn:hover {
+  background-color: #e74c3c;
+  color: white;
 }
 
 /* Mobile Responsive */

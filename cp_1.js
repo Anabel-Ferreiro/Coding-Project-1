@@ -40,6 +40,7 @@ form.addEventListener("mouseout", function(event) {
 });
 
 // Step 3: Form validation and submission
+// Step 3: Form validation and submission
 form.addEventListener("submit", function(event) {
   event.preventDefault();
 
@@ -71,20 +72,36 @@ form.addEventListener("submit", function(event) {
 
   // If valid, append feedback entry
   if (isValid) {
+    const now = new Date();
+    const timestamp = now.toLocaleString();
+
     const entry = document.createElement("div");
     entry.className = "feedback-entry";
     entry.innerHTML = `
-      <h3>${nameInput.value}</h3>
+      <h3>✅ ${nameInput.value}</h3>
       <p class="entry-email">${emailInput.value}</p>
       <p>${commentsInput.value}</p>
+      <p class="entry-timestamp">${timestamp}</p>
     `;
     feedbackDisplay.appendChild(entry);
 
-    // Reset form
+    setTimeout(() => {
+      entry.classList.add("show");
+    }, 10);
+
     form.reset();
     charCount.textContent = `0 / ${MAX_CHARS} characters`;
   }
 });
+
+// Clear all feedback button
+const clearBtn = document.getElementById("clear-btn");
+if (clearBtn) {
+  clearBtn.addEventListener("click", function() {
+    const entries = document.querySelectorAll(".feedback-entry");
+    entries.forEach(entry => entry.remove());
+  });
+}
 
 // Step 5: Prevent background clicks from triggering form events
 document.addEventListener("click", function(event) {
